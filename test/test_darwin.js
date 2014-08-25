@@ -31,7 +31,7 @@ describe('interface() - darwin', function() {
     it('- mac address should equal ' + config.macAddress, function() {
       assert.equal(config.macAddress, address.mac);
     });
-    it('- mask address should equal ' + config.mask, function() {
+    if(address.family == 'IPv4') it('- mask address should equal ' + config.mask, function() {
       assert.equal(config.mask, address.mask);
     });
   });
@@ -61,7 +61,7 @@ describe('interface() - darwin', function() {
     it('- mac address should equal ' + config.macAddress, function() {
       assert.equal(config.macAddress, address.mac);
     });
-    it('- mask address should equal ' + config.mask, function() {
+    if(address.family == 'IPv4') it('- mask address should equal ' + config.mask, function() {
       assert.equal(config.mask, address.mask);
     });
   });

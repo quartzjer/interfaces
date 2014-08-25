@@ -33,7 +33,7 @@ module.exports = (function() {
     }
 
     for(var address in interfaces[interfaceName]) {
-      if(mask) interfaces[interfaceName][address]['mask'] = mask;
+      if(mask && interfaces[interfaceName][address].family == 'IPv4') interfaces[interfaceName][address]['mask'] = mask;
       interfaces[interfaceName][address]['mac'] = macAddress;
     }
   });
