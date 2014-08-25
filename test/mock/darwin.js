@@ -17,7 +17,7 @@ module.exports = (function(macAddress) {
         'lo0: flags=8049<UP,LOOPBACK,RUNNING,MULTICAST> mtu 16384'
           + 'options=3<RXCSUM,TXCSUM>'
           + '  inet6 ::1 prefixlen 128'
-          + 'inet 127.0.0.1 netmask 0xff000000'
+          + 'inet 127.0.0.1 netmask 0xff000000\n'
           + 'inet6 fe80::1%lo0 prefixlen 64 scopeid 0x1'
           + 'nd6 options=1<PERFORMNUD>'
     },

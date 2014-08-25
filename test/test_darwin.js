@@ -19,6 +19,7 @@ describe('interface() - darwin', function() {
   var config = {
     interface: 'en0',
     platform: 'darwin',
+    mask:'255.255.255.0',
     macAddress:'b8:f6:b1:1c:2e:a7'
   };
 
@@ -29,6 +30,9 @@ describe('interface() - darwin', function() {
   _.each(interfaces()[config.interface], function(address) {
     it('- mac address should equal ' + config.macAddress, function() {
       assert.equal(config.macAddress, address.mac);
+    });
+    it('- mask address should equal ' + config.mask, function() {
+      assert.equal(config.mask, address.mask);
     });
   });
 
@@ -45,6 +49,7 @@ describe('interface() - darwin', function() {
   var config = {
     interface: 'lo0',
     platform: 'darwin',
+    mask: '255.0.0.0',
     macAddress:'00:00:00:00:00:00'
   };
 
@@ -55,6 +60,9 @@ describe('interface() - darwin', function() {
   _.each(interfaces()[config.interface], function(address) {
     it('- mac address should equal ' + config.macAddress, function() {
       assert.equal(config.macAddress, address.mac);
+    });
+    it('- mask address should equal ' + config.mask, function() {
+      assert.equal(config.mask, address.mask);
     });
   });
 
