@@ -11,7 +11,7 @@ module.exports = (function() {
 
   _.each(Object.keys(interfaces), function(interfaceName) {
     var ifconfig = utils.getInterfaceInfo(interfaceName)
-      , mask  = '255.255.255.255'
+      , mask
       , macAddress  = '00:00:00:00:00:00'
       , maskmatches = maskregex.exec(ifconfig)
       , macmatches = macregex.exec(ifconfig);
@@ -20,7 +20,7 @@ module.exports = (function() {
       macAddress = macmatches[0];
     }
 
-    if (maskmatches && maskmatches.length > 0) {
+    if (maskmatches && maskmatches.length > 1) {
       mask = maskmatches[1];
       // decompose any lame 0xff* format into dotted quad
       if(mask.length == 10 && mask.substring(0,2) == '0x')
@@ -33,7 +33,7 @@ module.exports = (function() {
     }
 
     for(var address in interfaces[interfaceName]) {
-      interfaces[interfaceName][address]['mask'] = mask;
+      if(mask) interfaces[interfaceName][address]['mask'] = mask;
       interfaces[interfaceName][address]['mac'] = macAddress;
     }
   });
